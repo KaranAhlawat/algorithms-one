@@ -1,0 +1,8 @@
+{
+	"java.project.referencedLibraries": [
+		"lib/**/*.jar",
+		".lift/algs4.jar"
+	],
+	"java.dependency.syncWithFolderExplorer": true,
+	"java.dependency.packagePresentation": "hierarchical"
+}
