@@ -7,7 +7,7 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class Deque<Item> implements Iterator<Item> {
+public class Deque<Item> implements Iterable<Item> {
 
     private Node first, last;
     private int count;
