@@ -120,17 +120,9 @@ public class Deque<Item> implements Iterable<Item> {
         }
     }
 
-    public boolean hasNext() {
-        throw new UnsupportedOperationException();
-    }
-
-    public Item next() {
-        throw new UnsupportedOperationException();
-    }
-
     // unit testing (required)
     public static void main(String[] args) {
-        Deque<Integer> deck = new Deque<Integer>();
+        Deque<Integer> deck = new Deque<>();
 
         System.out.println("IS EMPTY: " + deck.isEmpty());
 

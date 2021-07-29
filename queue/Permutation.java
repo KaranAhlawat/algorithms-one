@@ -11,15 +11,15 @@ public class Permutation {
     public static void main(String[] args) {
         int k = Integer.parseInt(args[0]);
 
-        RandomizedQueue<String> permutations = new RandomizedQueue<String>();
+        RandomizedQueue<String> permutations = new RandomizedQueue<>();
 
-        for (int i = 0; i < k; i++) {
+        while (!StdIn.isEmpty()) {
             String temp = StdIn.readString();
             permutations.enqueue(temp);
         }
 
         for (int i = 0; i < k; i++) {
-            StdOut.println(permutations.deque());
+            StdOut.println(permutations.dequeue());
         }
     }
 }

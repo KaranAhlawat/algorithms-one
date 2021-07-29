@@ -4,8 +4,8 @@
  *  Description: A randomized queue implementation using array and resizing.
  **************************************************************************** */
 
-import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
+import edu.princeton.cs.algs4.StdOut;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -34,7 +34,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         queue[count++] = item;
     }
 
-    public Item deque() {
+    public Item dequeue() {
         if (count == 0) throw new NoSuchElementException("Queue is empty.");
         int randIndex = StdRandom.uniform(count);
         Item item = queue[randIndex];
@@ -76,7 +76,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         public Item next() {
             if (copy.isEmpty()) throw new NoSuchElementException("The queue is empty.");
 
-            return copy.deque();
+            return copy.dequeue();
         }
 
         public void remove() {
@@ -85,6 +85,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     private void resize(int newSize) {
+        if (newSize == 0) newSize = 1;
         Item[] temp = (Item[]) new Object[newSize];
 
         for (int i = 0; i < count; i++) {
