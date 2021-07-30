@@ -15,11 +15,13 @@ public class Permutation {
 
         while (!StdIn.isEmpty()) {
             String temp = StdIn.readString();
+
             permutations.enqueue(temp);
         }
 
         for (int i = 0; i < k; i++) {
             StdOut.println(permutations.dequeue());
         }
+
     }
 }
