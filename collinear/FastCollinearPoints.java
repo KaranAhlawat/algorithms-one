@@ -9,12 +9,12 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdOut;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FastCollinearPoints {
 
-    private int numberOfSegments;
-    private LineSegment[] lineSegments;
+    private ArrayList<LineSegment> segments = new ArrayList<>();
 
     public FastCollinearPoints(Point[] points) {
             if (points == null)
@@ -22,15 +22,9 @@ public class FastCollinearPoints {
 
         validateInput(points);
 
-        numberOfSegments = 0;
-        lineSegments = new LineSegment[points.length];
+        Point[] slopeSortedPoints = points.clone();
 
-        Point[] slopeSortedPoints = new Point[points.length];
-        for (int i = 0; i < points.length; i++) {
-            slopeSortedPoints[i] = points[i];
-        }
-
-        for (int i = 0; i < slopeSortedPoints.length; i++) {
+        for (int i = 0; i < slopeSortedPoints.length - 3; i++) {
             Merge.sort(slopeSortedPoints);
 
             Arrays.sort(slopeSortedPoints, slopeSortedPoints[i].slopeOrder());
@@ -52,11 +46,11 @@ public class FastCollinearPoints {
     }
 
     public int numberOfSegments() {
-        return numberOfSegments;
+        return segments.size();
     }
 
     public LineSegment[] segments() {
-        return Arrays.copyOf(lineSegments, numberOfSegments());
+        return segments.toArray(new LineSegment[numberOfSegments()]);
     }
 
     private void validateInput(Point[] points) {
@@ -74,7 +68,7 @@ public class FastCollinearPoints {
     }
 
     private void addSegment(Point startingPoint, Point endingPoint) {
-        lineSegments[numberOfSegments++] = new LineSegment(startingPoint, endingPoint);
+        segments.add(new LineSegment(startingPoint, endingPoint));
     }
 
     private boolean collinear(Point p1, Point p2, Point p3) {
